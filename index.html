@@ -1,496 +1,922 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    
-    <!-- ==================================
-                   Custom CSS
-    ==================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website</title>
+  <style>
+      /* ==========================================
+              Google Fonts
+=========================================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* ==========================================
+              Global CSS
+=========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --bg-color: #1f242d;
+  --second-bg-color: #323946;
+  --text-color: #ffffffe2;
+  --main-color: #00fbff;
+  --transition: all 0.4s ease-in;
+}
+
+html {
+  font-size: 15.5px;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+section {
+  min-height: 100vh;
+  min-width: 100%;
+  padding: 7rem 9% 2rem;
+}
+
+/* ==========================================
+              Header
+=========================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 9%;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.header.sticky {
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-size: 2rem;
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: default;
+}
+
+/* ==========================================
+              Navbar
+=========================================== */
+.navbar a {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-left: 3.5rem;
+  transition: 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: var(--main-color);
+}
+
+#menu-icon {
+  color: var(--text-color);
+  font-size: 2rem;
+  display: none;
+}
+
+/* ==========================================
+              Home
+=========================================== */
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.home-img {
+  margin-top: 5rem;
+  margin-right: -5rem;
+  z-index: -1;
+}
+.home-img img {
+  width: 40vw;
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.4rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.home-content {
+  margin-top: -10rem;
+  width: 90%;
+}
+.home-content h3 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.home-content h3:nth-child(1) {
+  margin-top: 10rem;
+}
+
+span {
+  color: var(--main-color);
+}
+
+.home-content h1 {
+  color: var(--main-color);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.social-media a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  background: transparent;
+  border: 0.2rem solid var(--main-color);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: var(--main-color);
+  margin: 3rem 1.5rem 2.5rem 0;
+  transition: 0.3s ease;
+}
+
+.social-media a:hover {
+  background: var(--main-color);
+  color: var(--second-bg-color);
+  box-shadow: 0 0 1rem var(--main-color);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2.8rem;
+  background: var(--main-color);
+  border-radius: 4rem;
+  box-shadow: 0 0 1rem var(--main-color);
+  font-size: 1.3rem;
+  color: var(--second-bg-color);
+  font-weight: 600;
+  transition: 0.5s ease;
+}
+.btn:hover {
+  box-shadow: none;
+}
+
+/* ==========================================
+              About
+=========================================== */
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background: var(--second-bg-color);
+}
+.about-img img {
+  width: 34vw;
+}
+.heading {
+  text-align: center;
+  font-size: 3.5rem;
+}
+.about-content h2 {
+  text-align: left;
+  line-height: 1.2;
+}
+.about-content h3 {
+  font-size: 2.1rem;
+}
+.about-content p {
+  font-size: 1.1rem;
+  margin: 2rem 0 3rem;
+}
+
+/* ==========================================
+              Services
+=========================================== */
+.services h2 {
+  margin-bottom: 5rem;
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+.services-container .services-box {
+  flex: 1 1 25rem;
+  background: var(--second-bg-color);
+  padding: 1rem 2rem 4rem;
+  border-radius: 2rem;
+  text-align: center;
+  border: 0.2rem solid var(--bg-color);
+  transition: 0.5s ease;
+}
+.services-container .services-box:hover {
+  border-color: var(--main-color);
+  transform: scale(1.02);
+}
+.services-box i {
+  font-size: 5rem;
+  color: var(--main-color);
+}
+.services-box h3 {
+  font-size: 2.1rem;
+}
+.services-box p {
+  font-size: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+/* ==========================================
+              Portfolio
+=========================================== */
+.portfolio {
+  background: var(--second-bg-color);
+}
+
+.portfolio h2 {
+  margin-bottom: 5rem;
+}
+
+.portfolio-container {
+  display: grid;
+  height: 450px;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.portfolio-container .portfolio-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0 0 1rem var(--bg-color);
+  overflow: hidden;
+  display: flex;
+}
+
+.portfolio-box img {
+  width: 100%;
+  transition: 0.5s ease;
+}
+
+.portfolio-box:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio-box .portfolio-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), var(--main-color));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 0 4rem;
+  transform: translateY(100%);
+  transition: 0.5s ease;
+}
+
+.portfolio-box:hover .portfolio-layer {
+  transform: translateY(0);
+}
+
+.portfolio-layer h4 {
+  font-size: 2.1rem;
+}
+
+.portfolio-layer p {
+  font-size: 1.1rem;
+  margin: 0.3rem 0 1rem;
+}
+
+.portfolio-layer a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--text-color);
+  border-radius: 50%;
+}
+.portfolio-layer a i {
+  font-size: 1.5rem;
+  color: var(--second-bg-color);
+}
+/* ==========================================
+              FAQ
+=========================================== */
+.faq {
+  background: var(--second-bg-color);
+  padding: 5rem 9%;
+}
+
+.faq h2 {
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 4rem;
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faq-item {
+  background: var(--bg-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+}
+
+.faq-question {
+  font-size: 1.8rem;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.faq-answer {
+  display: none;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-top: 1rem;
+}
+
+/* Show answer on click */
+.faq-item.active .faq-answer {
+  display: block;
+}
+/* ==========================================
+              Contact
+=========================================== */
+.contact h2 {
+  margin-bottom: 5rem;
+}
+.contact form {
+  max-width: 45rem;
+  margin: 1rem auto;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact form .input-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  background: var(--second-bg-color);
+  border-radius: 0.5rem;
+  margin: 0.4rem 0;
+}
+
+.contact form .input-box input {
+  width: 49%;
+}
+
+.contact form textarea {
+  resize: none;
+}
+.contact form .btn {
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+/* ==========================================
+              Footer
+=========================================== */
+.footer {
+  display: flex;
+  justify-content: space-between;
+/* ==========================================
+              Blog
+=========================================== */
+.blog {
+  padding: 4rem 9%;
+  background: var(--second-bg-color);
+}
+
+.blog h2 {
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 3.5rem;
+}
+
+.blog-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.blog-container .blog-box {
+  flex: 1 1 30rem;
+  background: var(--bg-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-container .blog-box:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+}
+
+.blog-box img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.blog-box h3 {
+  font-size: 2rem;
+  margin-top: 1rem;
+  color: var(--main-color);
+}
+
+.blog-box p {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-top: 1rem;
+}
+
+/* ==========================================
+              Responsive Design
+=========================================== */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 5%;
+  }
+
+  .navbar a {
+    font-size: 1rem;
+    margin-left: 2rem;
+  }
+
+  #menu-icon {
+    display: block;
+  }
+
+  .home-img img {
+    width: 50vw;
+  }
+
+  .home-content {
+    width: 100%;
+  }
+
+  .about {
+    flex-direction: column;
+  }
+
+  .about-img img {
+    width: 80vw;
+  }
+
+  .services-container {
+    flex-direction: column;
+  }
+
+  .portfolio-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .contact form {
+    max-width: 100%;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-text p {
+    margin-bottom: 1rem;
+  }
+}
+</style>
+</Head>
+<Body>
+    <!-- ==========================================
+                  Box Icons
+    =========================================== -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- ==========================================
+                  Custom CSS
+    =========================================== -->
     <link rel="stylesheet" href="style.css" />
-    
-    <!-- ==================================
-                   Remix Icons
-    ==================================== -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
-    
-    <!-- ==================================
-                   Google Fonts
-    ==================================== -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
-    
-    <!-- ==================================
-                   Animate.css
-    ==================================== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
-    <!-- ==================================
-                   ScrollReveal.js
-    ==================================== -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-</head>
-<body>
-    <!-- ==================================
-                    NAVBAR
-    ==================================== -->
-    <!-- ==================================
-            Typed.js
-==================================== -->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <nav>
-      <div class="container nav-container">
-        <a href="index.html" class="logo">kai<span>Dev</span></a>
-        <ul class="navlist">
-          <li><a href="#home">home</a></li>
-          <li><a href="#about">about</a></li>
-          <li><a href="#services">services</a></li>
-          <li><a href="#portfolio">portfolio</a></li>
-          <li><a href="#testimonial">testimonial</a></li>
-          <li><a href="#contact">contact</a></li>
-        </ul>
-        <div class="nav-icons">
-          <div id="theme-btn" class="ri-moon-line"></div>
-          <div id="menu-btn" class="ri-menu-line"></div>
+    <!-- ==========================================
+                  Breakpoint
+    =========================================== -->
+    <link rel="stylesheet" href="breakpoint.css" />
+    <title>My Portfolio</title>
+  </head>
+  <body>
+    <!-- ==========================================
+                    Header
+    =========================================== -->
+    <header class="header">
+      <a href="#" class="logo">kai<span>Dev.</span></a>
+
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#FAQ">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- ==========================================
+                  Home Section
+    =========================================== -->
+    <section class="home" id="home">
+      <div class="home-content">
+        <h3>Welcome, I'm</h3>
+        <h1>kaizen</h1>
+        <h3>Specializing in <span id="typing-text"></span></h3>
+        <p>Data Analysis & Blockchain Development</p>
+        <div class="social-media">
+          <a href="https://www.linkedin.com/in/kai-zen-27285b324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://x.com/KZeen44231?t=LgNTDiTbLALwLRmIIrHIKw&s=09" target="_blank"><i class="bx bxl-twitter"></i></a>
         </div>
+        <!-- add link for your CV into `href` -->
+        <a href="Biru dan Oranye Modern Profesional Resume_20240907_114155_0000.pdf" class="btn" target="_blank">Download CV</a>
       </div>
-    </nav>
-   <!-- ==================================
-      HOME SECTION
-==================================== -->
-<section class="home" id="home">
-  <div class="container home-container">
-    <div class="left">
-      <h3>Hello, It's Me</h3>
-      <h1><span>kaizen</span></h1>
-      <!-- You can edit `multiple-text` in ( /assets/js/script.js ), then search and edit `strings` in TYPED Js -->
-      <h3>And I'm a <span class="multiple-text"></span></h3>
-      <p>
-        Welcome to my web development portfolio! Here, you'll find a showcase of various projects and work that I have completed in the field of web development. This portfolio reflects my skills, creativity, and experience in crafting innovative and effective digital solutions.
-      </p>
-      <div class="social-icons-container">
-        <div class="social-icons">
-        
-        </div>
-        <button class="btn overlay" id="btn">
-          <span>Hire me</span>
-        </button>
+
+      <div class="home-img">
+        <img src="freepik_br_e45f4513-d8cf-4944-8150-d1fa79dde896.png" alt="kaizen - Data Analyst and Blockchain Developer" />
       </div>
-    </div>
-    <div class="right">
-      <!-- Add your home or profile photo in src from assets/images/ -->
-      <img src="freepik_br_e45f4513-d8cf-4944-8150-d1fa79dde896.png" alt="Profile Photo" />
-    </div>
-  </div>
-</section>
-  <!-- ==================================
-                  ABOUT SECTION
-==================================== -->
-<section class="about" id="about">
-    <div class="container about-container">
-        <div class="left">
-            <!-- Gambar Profil -->
-            <img src="freepik_br_e45f4513-d8cf-4944-8150-d1fa79dde896.png" alt="Profil" />
-        </div>
-        <div class="right">
-            <div class="title">
-                <h2>About <span>Me</span></h2>
-            </div>
-            <h3>I'm a Full stack web development </h3>
-            <p>
-                Hello, I’m kaizen a dedicated Web Developer with 2 years of experience in building innovative and functional web applications. My expertise spans both front-end and back-end technologies, allowing me to tackle various challenges in web development effectively. I am proficient in multiple programming languages and tools, including JavaScript, Python, PHP, and MySQL. Additionally, I have hands-on experience with frameworks and libraries such as React and Node.js.Beyond my technical skills, I am passionate about creating responsive designs and enhancing user experiences. I stay current with the latest trends in technology to ensure that my solutions are both modern and efficient. Outside of web development, I enjoy graphic design and exploring new technological advancements.If you’re looking for a developer who can provide creative and effective web solutions, I’m ready to collaborate and bring your ideas to life.
-            </p>
-            <!-- Grafik Keterampilan -->
-            <div class="container">
-                <div class="progress-bar">
-                    <div class="outer-circle">
-                        <div class="inner-circle">
-                            <div class="html-number number">
-                                <h4>JavaScript</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                        <defs>
-                            <linearGradient id="GradientColor">
-                                <stop offset="0%" stop-color="#9b2fff" />
-                                <stop offset="100%" stop-color="#ff2f48" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="80" cy="80" r="70" stroke-linecap="round" />
-                    </svg>
-                </div>
-                <div class="progress-bar">
-                    <div class="outer-circle">
-                        <div class="inner-circle">
-                            <div class="html-number number">
-                                <h4>React js</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                        <defs>
-                            <linearGradient id="GradientColor">
-                                <stop offset="0%" stop-color="#9b2fff" />
-                                <stop offset="100%" stop-color="#ff2f48" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="80" cy="80" r="70" stroke-linecap="round" />
-                    </svg>
-                </div>
-                <div class="progress-bar">
-                    <div class="outer-circle">
-                        <div class="inner-circle">
-                            <div class="html-number number">
-                                <h4>Node js</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                        <defs>
-                            <linearGradient id="GradientColor">
-                                <stop offset="0%" stop-color="#9b2fff" />
-                                <stop offset="100%" stop-color="#ff2f48" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="80" cy="80" r="70" stroke-linecap="round" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    <!-- ==================================
-                SERVICE SECTION
-    ==================================== -->
+    </section>
+
+    <!-- ==========================================
+                  About Section
+    =========================================== -->
+    <section class="about" id="about">
+      <div class="about-img">
+        <img src="freepik_br_e45f4513-d8cf-4944-8150-d1fa79dde896.png" alt="about" />
+      </div>
+
+      <div class="about-content">
+        <h2 class="heading">About <span>Me</span></h2>
+        <p>
+          Data Analyst and Blockchain Developer with 3+ Years of Experience |  Skilled in Data Analysis, Python, SQL, 
+          Blockchain Technologies, Smart Contracts, and DApps | Eager to Drive 
+          Data-Driven Decisions and Blockchain Innovations.
+        </p>
+        <a href="#" class="btn">Read More</a>
+      </div>
+    </section>
+
+    <!-- ==========================================
+                  Services Section
+    =========================================== -->
     <section class="services" id="services">
-      <div class="title">
-        <h2>Our  <span>Services</span></h2>
+      <h2 class="heading">Our <span>Services</span></h2>
+
+      <div class="services-container">
+        <div class="services-box">
+          <i class="bx bx-bar-chart"></i>
+          <h3>Data Analysis</h3>
+          <p>
+            Expert in data analysis, data visualization, and deriving actionable 
+            insights from complex datasets. Proficient in Python, SQL, and various 
+            data analysis tools.
+          </p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+
+        <div class="services-box">
+          <i class="bx bx-blockchain"></i>
+          <h3>Blockchain Development</h3>
+          <p>
+            Specialized in developing blockchain applications, smart contracts, and 
+            decentralized applications (DApps). Experienced with Ethereum, Solidity, 
+            and other blockchain technologies.
+          </p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+
+        <div class="services-box">
+          <i class="bx bx-code-alt"></i>
+          <h3>Front End Development</h3>
+          <p>
+            Proficient in creating responsive and engaging user interfaces using HTML, 
+            CSS, and JavaScript. Experienced with front-end frameworks and libraries.
+          </p>
+          <a href="#" class="btn">Read More</a>
+        </div>
       </div>
-      <div class="container services-container">
-        <div class="box overlay content-1">
-          <div class="content ">
-            <i class="ri-html5-fill"></i>
-            <h4>Web Developement</h4>
-            <button class="btn">Book Service</button>
+    </section>
+
+    <!-- ==========================================
+                  Portfolio Section
+    =========================================== -->
+    <section class="portfolio" id="portfolio">
+      <h2 class="heading">Latest <span>Project</span></h2>
+
+      <div class="portfolio-container">
+        <div class="portfolio-box">
+          <img src="grafik_penjualan_profesional.png" alt="portfolio" />
+          <div class="portfolio-layer">
+            <h4>sales graph</h4>
+            <p>
+              Developed an interactive sales graph to illustrate performance trends over time, enabling easy tracking of daily, weekly, and monthly sales patterns.
+            </p>
+            <a href="#"><i class="bx bx-link-external"></i></a>
           </div>
         </div>
-        <div class="box overlay content-1">
-          <div class="content ">
-            <i class="ri-css3-fill"></i>
-            <h4>Web Design</h4>
-            <button class="btn">Book Service</button>
+
+        <div class="portfolio-box">
+          <img src="grafik_sentimen_3d.png" alt="portfolio" />
+          <div class="portfolio-layer">
+            <h4>sentimen graph</h4>
+            <p>
+              Designed a sentiment graph to analyze and visualize public perceptions of our products, highlighting positive, negative, and neutral feedback.
+            </p>
+            <a href="#"><i class="bx bx-link-external"></i></a>
           </div>
         </div>
-        <div class="box overlay content-1">
-          <div class="content ">
-            <i class="ri-javascript-fill"></i>
-            <h4>App Developement</h4>
-            <button class="btn">Book Service</button>
+
+        <div class="portfolio-box">
+          <img src="heatmap_korelasi.png" alt="portfolio" />
+          <div class="portfolio-layer">
+            <h4>Correlation Heatmap</h4>
+            <p>
+              Created a correlation heatmap to uncover relationships between dataset variables, facilitating the identification of significant patterns and connections.
+            </p>
+            <a href="#"><i class="bx bx-link-external"></i></a>
           </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="histogram_distribusi.png" alt="portfolio" />
+          <div class="portfolio-layer">
+            <h4>Distribution Histogram</h4>
+            <p>
+              Implemented a distribution histogram to display data spread across value ranges, aiding in the analysis of frequency and distribution characteristics.
+            </p>
+            <a href="#"><i class="bx bx-link-external"></i></a>
           </div>
-          <div class="box overlay content-2">
-            <div class="content ">
-              <i class="ri-bug-fill"></i>
-              <h4>Bug Fixing</h4>
-              <button class="btn">Book Service</button>
-            </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="Orange White Green Neo Brutalism Business Performance Dashboard Graph_20240913_210506_0000.png" alt="portfolio" />
+          <div class="portfolio-layer">
+            <h4>Data Analysis Dashboard</h4>
+            <p>
+              Developed a comprehensive dashboard for real-time data analysis and reporting.
+            </p>
+            <a href="#"><i class="bx bx-link-external"></i></a>
           </div>
-          <div class="box overlay content-2">
-            <div class="content ">
-              <i class="ri-stack-fill"></i>
-              <h4>Full Stack</h4>
-              <button class="btn">Book Service</button>
-            </div>
-          </div>
-          <div class="box overlay content-2">
-            <div class="content ">
-              <i class="ri-paint-fill"></i>
-              <h4>Graphic Design</h4>
-              <button class="btn">Book Service</button>
-            </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="20240914_074442_0000.png" alt="portfolio" />
+          <div class="portfolio-layer">
+            <h4>Interactive Blockchain Explorer</h4>
+            <p>
+              Created an interactive tool for exploring blockchain transactions and data.
+            </p>
+            <a href="#"><i class="bx bx-link-external"></i></a>
           </div>
         </div>
       </div>
     </section>
-   <section class="portfolio" id="portfolio">
-    <div class="title">
-        <h2>Latest <span>Project</span></h2>
+     <!-- ==========================================
+              FAQ
+=========================================== -->
+<section class="faq">
+  <div class="faq-container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <input type="checkbox" id="faq">
+      <label for="faq" class="faq-question">What is a Blockchain Developer and what skills are required?</label>
+      <div class="faq-answer">
+        <p>A Blockchain Developer specializes in developing and implementing blockchain-based solutions. Essential skills include proficiency in blockchain platforms (like Ethereum or Hyperledger), programming languages (such as Solidity, JavaScript, or Python), and understanding cryptographic algorithms and distributed systems.</p>
+      </div>
     </div>
-    <div class="portfolio-container">
-        <div class="portfolio-buttons">
-            <button class="btn portfolio-tab active" data-target="all">All</button>
-            <button class="btn portfolio-tab" data-target="webdevelop">Web Develop</button>
-            <button class="btn portfolio-tab" data-target="webdesign">Web Design</button>
-        </div>
-        <div class="tab-content-container">
-            <div class="tab-content active-content" id="all">
-                <!-- Content for 'All' -->
-                <div class="tab-content-item"><img src="20240821_212154_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="20240821_162349_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="20240821_212107_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="20240821_171533_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="20240821_183742_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="20240821_121037_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="Black and White Tablet Web Design Promotion Instagram Post_20240822_065911_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="Blue And White Modern Web Design Company Instagram Post_20240822_074646_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="White Modern Photo-centric Web Design Company Instagram Post_20240822_071721_0000.png" alt=""></div>
-            </div>
-            <div class="tab-content" id="webdevelop">
-                <!-- Content for 'Web Develop' -->
-                <div class="tab-content-item"><img src="20240821_212154_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="20240821_162349_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="20240821_212107_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="20240821_171533_0000.png" alt=""></div>
-                  <div class="tab-content-item"><img src="20240821_183742_0000.png" alt=""></div>
-                    <div class="tab-content-item"><img src="20240821_121037_0000.png" alt=""></div>
-            </div>
-            <div class="tab-content" id="webdesign">
-                <!-- Content for 'Web Design' -->
-                <div class="tab-content-item"><img src="Black and White Tablet Web Design Promotion Instagram Post_20240822_065911_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="Blue And White Modern Web Design Company Instagram Post_20240822_074646_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="White Modern Photo-centric Web Design Company Instagram Post_20240822_071721_0000.png" alt=""></div>
-                <div class="tab-content-item"><img src="assets/i" alt=""></div>
-                 <div class="tab-content-item"><img src="Web Design Agency Flyer in Red Black and White Corporate Geometric Style_20240822_073445_0000.png" alt=""></div>
-                  <div class="tab-content-item"><img src="assets/images/img12.png" alt=""></div>
-            </div>
-            <div class="tab-content" id="appdevelop">
-            </div>
-        </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq2">
+      <label for="faq2" class="faq-question">What are the primary responsibilities of a Data Analyst?</label>
+      <div class="faq-answer">
+        <p>Data Analysts are responsible for collecting, processing, and analyzing data to help organizations make informed decisions. Their tasks include data mining, creating reports, and visualizing data trends using tools like Excel, SQL, and BI platforms (e.g., Tableau or Power BI).</p>
+      </div>
     </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq3">
+      <label for="faq3" class="faq-question">How does a Blockchain Developer ensure security in their applications?</label>
+      <div class="faq-answer">
+        <p>Blockchain Developers ensure security by implementing strong cryptographic techniques, conducting thorough code audits, and following best practices for smart contract development. They also stay updated with the latest security protocols and vulnerabilities.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4">
+      <label for="faq4" class="faq-question">What tools and technologies are commonly used by Data Analysts?</label>
+      <div class="faq-answer">
+        <p>Data Analysts commonly use tools such as Excel, SQL for database querying, and data visualization tools like Tableau or Power BI. They may also use statistical software like R or Python libraries for advanced analytics.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq5">
+      <label for="faq5" class="faq-question">What is the role of smart contracts in blockchain technology?</label>
+      <div class="faq-answer">
+        <p>Smart contracts are self-executing contracts with the terms of the agreement directly written into code. They automatically execute, control, or document events and actions according to the contract's terms, eliminating the need for intermediaries and reducing the risk of fraud.</p>
+      </div>
+    </div>
+  </div>
 </section>
-   <!-- ==================================
-                TESTIMONIAL SECTION
-   ==================================== -->
-<section class="testimonial" id="testimonial">
-    <div class="title">
-        <h2>Testi<span>monial</span></h2>
-    </div>
-    <div class="main-container">    
-        <div class="container testimonial-container scrollbar">
-            <div class="card">
-                <img src="selebriti-pakai-aplikasi-wajah-korea-7.png" alt="Claudia">
-                <div class="info">
-                    <h3>Claudia</h3>
-                    <p>"Working with Kaizen and their team has been an outstanding experience. They combine a focus on continuous improvement with meticulous attention to detail, delivering results that exceeded our expectations. We highly recommend them for any project requiring dedication and expertise."</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="ai-generated-8381176_1280.jpg" alt="John Doe">
-                <div class="info">
-                    <h3>John Doe</h3>
-                    <p>"Kaizen and their team truly transformed how we view projects. With their continuous improvement principles, we not only achieved satisfying end results but also a highly efficient process. Their commitment to quality and innovation makes them our top choice."</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="selebriti-pakai-aplikasi-wajah-korea-1.png" alt="Christabell">
-                <div class="info">
-                    <h3>shintya</h3>
-                    <p>"Kaizen has proven to be an invaluable partner. With their approach to continuous improvement, our project was not only completed on time but also with exceptional results. Their professionalism and dedication are impressive, and I highly recommend them."</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="ai-generated-8566904_640.jpg" alt="Stevannie">
-                <div class="info">
-                    <h3>Stevannie</h3>
-                    <p>"Collaborating with Kaizen was the best decision we made. With a focus on continuous improvement, they provided creative and effective solutions. The process was smooth, and the results were gratifying. We are very pleased with their work and would recommend them without hesitation."</p>
-                </div>
-            </div>
+    <!-- ==========================================
+                  Contact Section
+    =========================================== -->
+    <section class="contact" id="contact">
+      <h2 class="heading">Contact <span>Me</span></h2>
+
+      <form action="#">
+        <div class="input-box">
+          <input type="text" placeholder="Full Name" />
+          <input type="email" placeholder="Email Address" />
         </div>
-    </div>
-</section>
-      <!-- ==================================
-                CONTACT SECTION
-   ==================================== -->
-   <section class="contact" id="contact">
-    <div class="title">
-        <h2>Contact <span>Me</span></h2>
-    </div>
-    <div class="contact-content">
-        <div class="row">
-          <div class="box">
-              <div class="box-icon">
-                  <i class="ri-home-line"></i>
-              </div>
-              <div class="box-info">
-                  <h4>Address</h4>
-                  <span>Ponorogo, East Java - Indonesia</span>
-              </div>
-          </div>
-          <div class="box">
-              <div class="box-icon">
-                  <i class="ri-phone-line"></i>
-              </div>
-              <div class="box-info">
-                  <h4>Phone Number</h4>
-                  <span>+6281515536806</span>
-              </div>
-          </div>
-          <div class="box">
-              <div class="box-icon">
-                  <i class="ri-mail-line"></i>
-              </div>
-              <div class="box-info">
-                  <h4>Email Address</h4>
-                  <span>kzen3966@gmail.com</span>
-              </div>
-          </div>
+
+        <div class="input-box">
+          <input type="number" placeholder="Mobile Number" />
+          <input type="text" placeholder="Email Subject" />
         </div>
-        <div class="row">
-            <form action="" class="contact-form">
-                <div class="form-box">
-                    <input type="text" placeholder="Enter Your Name" required>
-                </div>
-                <div class="form-box">
-                    <input type="email" placeholder="Enter Your Email" required>
-                </div>
-                <div class="form-box">
-                    <input type="text" placeholder="Email Subject" required>
-                </div>
-                <div class="form-box">
-                    <textarea name="Message" id="" cols="10" rows="10" placeholder="Your Message"></textarea>
-                </div>
-                <button type="submit" class="btn overlay">
-                    <span>Send Message</span>
-                </button>
-            </form>
-        </div>
-    </div>
-   </section>
-   <div class="copyright">
-    <p>Copyright &copy; 2024 by kaizen | All right Reserved.</p>
-   </div>
-   <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const portfolioTabs = document.querySelectorAll(".portfolio-tab");
-  const tabContents = document.querySelectorAll(".tab-content");
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="Your Message"
+        ></textarea>
+        <input type="submit" value="Send Message" class="btn" />
+      </form>
+    </section>
 
-  function tabOpen(event, id) {
-    event.preventDefault();
+    <!-- ==========================================
+                    Footer
+    =========================================== -->
+    <footer class="footer">
+      <div class="footer-text">
+        <p>Copyright &copy; 2024 by kaizen | All Rights Reserved.</p>
+      </div>
 
-    // Hapus class 'active' dari semua tab
-    portfolioTabs.forEach(tab => {
-      tab.classList.remove("active");
-    });
+      <div class="footer-iconTop">
+        <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+      </div>
+    </footer>
 
-    // Hapus class 'active-content' dari semua konten
-    tabContents.forEach(content => {
-      content.classList.remove("active-content");
-    });
+    <!-- ==========================================
+                  Scroll Reveal
+    =========================================== -->
+    <script src="https://unpkg.com/scrollreveal"></script>
 
-    // Tambahkan class 'active' pada tab yang diklik
-    const clickedTab = event.currentTarget;
-    clickedTab.classList.add("active");
+    <!-- ==========================================
+                  Typed JS
+    =========================================== -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-    // Tambahkan class 'active-content' pada konten yang sesuai
-    const targetContent = document.getElementById(id);
-    if (targetContent) {
-      targetContent.classList.add("active-content");
-    } else {
-      console.error(`Konten dengan ID ${id} tidak ditemukan.`);
-    }
-  }
+    <!-- ==========================================
+                  Custom JS
+    =========================================== -->
+    <script>
+        
+// Toggle Menu Icon Navbar
+const menuIcon = document.querySelector("#menu-icon");
+const navbar = document.querySelector(".navbar");
 
-  // Tambahkan event listener untuk setiap tab
-  portfolioTabs.forEach(tab => {
-    tab.addEventListener("click", (event) => {
-      const targetId = tab.getAttribute("data-target");
-      console.log(`Menambahkan event click pada tab dengan target ID: ${targetId}`);
-      tabOpen(event, targetId);
-    });
-  });
-
-  // ============== MENU NAVBAR ================
-  const navlist = document.querySelector(".navlist");
-  const menuBtn = document.querySelector(".ri-menu-line");
-
-  menuBtn.onclick = function () {
-    navlist.classList.toggle("active");
-    menuBtn.classList.toggle("ri-arrow-up-double-line");
-  };
-
-  // ============== STICKY NAVBAR ================
-  window.addEventListener("scroll", () => {
-    document.querySelector("nav").classList.toggle("scrolling", window.scrollY > 50);
-  });
-
-  // ============== TYPING EFFECT ================
-  const textElement = document.querySelector('.multiple-text');
-  const texts = ['Web Development', 'Web Designer', 'design grafis', 'Fullstack development', 'Bug Fixer', 'UI/UX Designer'];
-  let textIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typingSpeed = 100;
-  const deletingSpeed = 50;
-  const pauseDuration = 1000;
-
-  function type() {
-    const currentText = texts[textIndex];
-    if (isDeleting) {
-      textElement.textContent = currentText.substring(0, charIndex--);
-      if (charIndex < 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        setTimeout(type, pauseDuration);
-      } else {
-        setTimeout(type, deletingSpeed);
-      }
-    } else {
-      textElement.textContent = currentText.substring(0, charIndex++);
-      if (charIndex > currentText.length) {
-        isDeleting = true;
-        setTimeout(type, pauseDuration);
-      } else {
-        setTimeout(type, typingSpeed);
-      }
-    }
-  }
-
-  type();
-
-  // ============== DARK THEME ================
-  let themeBtn = document.querySelector("#theme-btn");
-
-  themeBtn.onclick = function () {
-    themeBtn.classList.toggle("ri-sun-line");
-    if (themeBtn.classList.contains("ri-sun-line")) {
-      document.body.classList.add("active");
-    } else {
-      document.body.classList.remove("active");
-    }
-  };
-
-  // ============== SCROLL REVEAL ANIMATION ================
-  const sr = ScrollReveal({
-    distance: "50px",
-    duration: 1000,
-    delay: 200,
-    reset: true,
-  });
-
-  sr.reveal(".home-container h3", { origin: "top" });
-  sr.reveal(".home-container h1", { origin: "left" });
-  sr.reveal(".home-container p", { origin: "left" });
-  sr.reveal(".home-container .right", { origin: "right" });
-  sr.reveal(".social-icons-container", { origin: "right" });
-  sr.reveal(".about-container .title", { origin: "right" });
-  sr.reveal(".about-container h3", { origin: "bottom" });
-  sr.reveal(".about-container p", { origin: "bottom" });
-  sr.reveal(".about-container .left", { origin: "left" });
-  sr.reveal(".about-container .right", { origin: "right" });
-  sr.reveal(".services .title", { origin: "top" });
-  sr.reveal(".services .content-1", { origin: "left" });
-  sr.reveal(".services .content-2", { origin: "right" });
-  sr.reveal(".portfolio-container", { origin: "bottom" });
-  sr.reveal(".portfolio .title", { origin: "top" });
-  sr.reveal(".portfolio-buttons", { origin: "left" });
-  sr.reveal(".testimonial .title", { origin: "right" });
-  sr.reveal(".testimonial .testimonial-container", { origin: "left" });
-  sr.reveal(".contact .title", { origin: "top" });
-  sr.reveal(".contact .row .box", { origin: "right" });
-  sr.reveal(".contact .row .contact-form", { origin: "left" });
+menuIcon.addEventListener('click', () => {
+  menuIcon.classList.toggle("bx-x");
+  navbar.classList.toggle("active");
 });
-</script>
-         
+
+// Scroll Section Active Link
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("header nav a");
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+
+  sections.forEach((sec) => {
+    const offset = sec.offsetTop - 150;
+    const height = sec.offsetHeight;
+    const id = sec.getAttribute("id");
+
+    if (scrollPosition >= offset && scrollPosition < offset + height) {
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(id)) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+
+  // Sticky Navbar
+  const header = document.querySelector("header");
+  header.classList.toggle("sticky", scrollPosition > 100);
+
+  // Close menu on scroll
+  menuIcon.classList.remove("bx-x");
+  navbar.classList.remove("active");
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const faqItem = question.closest('.faq-item');
+      const isActive = faqItem.classList.contains('active');
+      
+      // Remove 'active' class from all FAQ items
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // If the clicked FAQ item was not active, add 'active' class
+      if (!isActive) {
+        faqItem.classList.add('active');
+      }
+    });
+  });
+});
+
+// Scroll Reveal
+ScrollReveal({
+  reset: true,
+  distance: "80px",
+  duration: 2000,
+  delay: 200,
+});
+
+ScrollReveal().reveal(".home-content, .heading", { origin: "top" });
+ScrollReveal().reveal(
+  ".home-img, .services-container, .portfolio-box, .contact form",
+  { origin: "bottom" }
+);
+ScrollReveal().reveal(".home-content h1, .about-img", { origin: "left" });
+ScrollReveal().reveal(".home-content p, .about-content", { origin: "right" });
+
+// Typed JS
+const typed = new Typed("#typing-text", {
+  strings: ["Data Insights Specialist", "Blockchain Application Developer", "Innovative Technologist"],
+  typeSpeed: 75,
+  backSpeed: 50,
+  backDelay: 1500,
+  loop: true,
+});
+    </script>
   </body>
 </html>
